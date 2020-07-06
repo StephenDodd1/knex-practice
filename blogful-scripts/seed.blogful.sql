@@ -1,0 +1,25 @@
+INSERT INTO blogful_articles (title, content, date_published)
+VALUES
+    ('Fish tricks', 'The amazing things fish can do', now() - '21 days'::INTERVAL),
+    ('Not Dogs', 'All about cats', now() - '21 days'::INTERVAL),
+    ('Bluffalo Wings', 'They have wings?! Newest flightless bird', now() - '21 days'::INTERVAL),
+    ('SubstiTuna Salad', 'Latest vegan trend', now() - '21 days'::INTERVAL),
+    ('Tofurkey', 'A vegan favorite!', now() - '21 days'::INTERVAL),
+    ('Pretenderloins', 'A pork murder mystery...! Duh Dun Duhn', now() - '9 days'::INTERVAL),
+    ('Steak-believe', 'A prairie tale', now() - '9 days'::INTERVAL),
+    ('Kale Seitan', 'Eww, but good for your heart!', now() - '9 days'::INTERVAL),
+    ('NoBull Burger', 'That''s no bologna', now() - '9 days'::INTERVAL),
+    ('Turnip the Beet', 'It''s beety and turnippy', now() - '9 days'::INTERVAL),
+    ('Mascarphony', 'A symphony of marscapone... or is it? EXPOSED!', now() - '7 days'::INTERVAL),
+    ('Burgatory', 'Where beefcows go after slaugher?!', now() - '7 days'::INTERVAL),
+    ('Sleight of Ham', 'Ham Trickery!', now() - '5 days'::INTERVAL),
+    ('Antichovies', 'An anchovie appetizer... yep. Read all about it.', now() - '5 days'::INTERVAL),
+    ('Lettuce B. Frank', 'A serious read about beef franks',  now() - '5 days'::INTERVAL),
+    ('Pepperphony', 'Vegan Pizza hits the shelves! Now with pepperoni', now() - '5 days'::INTERVAL),
+    ('Shamburger', 'How you been gettin scammed by the burger sham.', now() - '4 days'::INTERVAL),
+    ('Facon', 'It don''t come from pigs', now() - '4 days'::INTERVAL),
+    ('Salami-get-this-straight', 'Vegan salami is better than the real thing.', now() - '4 days'::INTERVAL),
+    ('Mi-steak', 'This vegan brand is no mistake. It''s actually vegan', now() - '3 days'::INTERVAL),
+    ('Ghost Beef', 'Since ghosts aren'' living, this meats totally vegan', now() - '3 days'::INTERVAL),
+    ('Cheatloaf', 'For the cheater pumpkin eater in your life.', now() - '3 days'::INTERVAL)
+;
