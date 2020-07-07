@@ -72,5 +72,23 @@ describe('Shopping List Service Object', () => {
                })
             })
          })
+         it(`updateItem() updates an item object from the 'shopping_list' table`, () => {
+            const itemIdToUpdate = 12002
+            const newItemData = {
+               name: 'updated name',
+               date_added: new Date(),
+               checked: true,
+               category: 'Main',
+               price: "5.99"
+            }
+            return ShoppingListService.updateItem(db, itemIdToUpdate, newItemData)
+               .then(() => ShoppingListService.getById(db, itemIdToUpdate))
+               .then(item => {
+               expect(item).to.eql({
+                  id: itemIdToUpdate,
+                  ...newItemData,
+               })
+            })
+         })
       })
    })
