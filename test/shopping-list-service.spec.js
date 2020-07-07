@@ -56,5 +56,21 @@ describe('Shopping List Service Object', () => {
                })))
             })
       })
+      it('should render one article with getById()', () => {
+         const specId = 12002
+         const testSpecItem = testList[specId - 12001]
+         return ShoppingListService.getById(db, specId)
+            .then(actual => {
+               expect(actual)
+               .to.eql({
+                  id: specId,
+                  name: testSpecItem.name,
+                  price: testSpecItem.price,
+                  date_added: testSpecItem.date_added,
+                  checked: testSpecItem.checked,
+                  category: testSpecItem.category
+               })
+            })
+         })
+      })
    })
-})
