@@ -1,0 +1,60 @@
+const ShoppingListService = require('../src/shopping-list-service.js');
+require('dotenv').config();
+const knex = require('knex');
+
+describe('Shopping List Service Object', () => {
+
+   let db
+   let testList = [
+      {
+         id: 12001,
+         name: 'Bologna',
+         price: "1.99",
+         date_added: new Date('2019-02-22T23:33:43.615Z'),
+         checked: false,
+         category: 'Lunch'
+      },
+      {
+         id: 12002,
+         name: 'Mystery Meat',
+         price: "5.99",
+         date_added: new Date('2012-12-22T23:33:43.615Z'),
+         checked: false,
+         category: 'Main'
+      },
+      {
+         id: 12003,
+         name: 'String Cheese',
+         price: "3.99",
+         date_added: new Date('2020-02-22T23:33:43.615Z'),
+         checked: false,
+         category: 'Breakfast'
+      },
+   ]
+   before(() => {
+      db = knex({
+         client: 'pg',
+         connection: process.env.TEST_DB_URL
+      })
+   })
+   before(() => db('shopping_list').truncate())
+   afterEach(() => db('shopping_list').truncate())
+   after(()=> db.destroy())
+
+   context('Given shopping_list has data', () => {
+      beforeEach(() => {
+         return db
+            .into('shopping_list')
+            .insert(testList)
+         })
+      it('should return the list items from shopping_list', () => {
+         return ShoppingListService.getAllItems(db)
+            .then(actual => {
+               expect(actual).to.eql(testList.map(item => ({
+                  ...item,
+                  date_added: new Date(item.date_added)
+               })))
+            })
+      })
+   })
+})

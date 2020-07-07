@@ -40,6 +40,15 @@ describe(`Articles service object`, function() {
             .into('blogful_articles')
             .insert(testArticles)
          })
+      it(`resolves all articles from 'blogful_articles' table`, () => {
+         return ArticlesService.getAllArticles(db)
+            .then(actual => {
+               expect(actual).to.eql(testArticles.map(article => ({
+                  ...article,
+                  date_published: new Date(article.date_published)
+               })))
+            })
+      })
       it(`getById() resolves an article by id from 'blogful_articles' table`, () => {
          const thirdId = 3
          const thirdTestArticle = testArticles[thirdId - 1]
@@ -53,15 +62,6 @@ describe(`Articles service object`, function() {
                })
             })
          })
-      it(`resolves all articles from 'blogful_articles' table`, () => {
-         return ArticlesService.getAllArticles(db)
-            .then(actual => {
-               expect(actual).to.eql(testArticles.map(article => ({
-                  ...article,
-                  date_published: new Date(article.date_published)
-               })))
-            })
-      })
       it(`updateArticle() updates an article from the 'blogful_articles' table`, () => {
          const idOfArticleToUpdate = 3
          const newArticleData = {
